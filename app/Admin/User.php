@@ -20,7 +20,6 @@ AdminSection::registerModel(User::class, function (ModelConfiguration $model) {
     $model->onCreateAndEdit(function() {
         return AdminForm::form()->setItems([
             AdminFormElement::text('email', 'Почта')->required(),
-            AdminFormElement::password('password', 'Пароль')->required(),
             AdminFormElement::timestamp('last_login', 'Last Login'),//->seconds(true),
             AdminFormElement::text('first_name', 'First Name'),
             AdminFormElement::text('last_name', 'Last Name'),

@@ -19,7 +19,7 @@ class AdminPanel
      */
     public function handle($request, Closure $next)
     {
-        if (Sentinel::guest()) return redirect('login');
+        if(Sentinel::guest()) return redirect('login');
         if(Sentinel::inRole('admin')) return $next($request);
         return Redirect::back();
     }
