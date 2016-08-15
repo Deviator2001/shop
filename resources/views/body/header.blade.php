@@ -5,14 +5,14 @@
 </ul>
 <ul class="nav navbar-nav navbar-right">
         @if (Auth::guest())
-            <li><a href="{{ url('/auth/login') }}"><span class="glyphicon glyphicon-log-in"></span> Войти</a></li>
-            <li><a href="{{ url('/auth/register') }}"><span class="glyphicon glyphicon-registration-mark"></span> Регистрация</a></li>
+            <li><a href="{{ url('/login') }}"><span class="glyphicon glyphicon-log-in"></span> Войти</a></li>
+            <li><a href="{{ url('/register') }}"><span class="glyphicon glyphicon-registration-mark"></span> Регистрация</a></li>
         @else
             <li><a href="{{ url('/admin') }}"><span class="glyphicon glyphicon-wrench"></span> Управление сайтом</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="glyphicon glyphicon-user"></span></a>
                 <ul class="dropdown-menu" role="menu">
-                    <li><a href="{{ url('/auth/logout') }}">Выйти</a></li>
+                    <li><a href="{{ url('/logout') }}">Выйти</a></li>
                 </ul>
             </li>
         @endif

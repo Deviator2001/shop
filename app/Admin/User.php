@@ -1,27 +1,30 @@
 <?php
 
-Admin::model('App\User')->title('Пользователи')->display(function ()
-{
-	$display = AdminDisplay::datatables();
-	$display->with();
-	$display->filters([
+use App\User;
+use SleepingOwl\Admin\Model\ModelConfiguration;
 
-	]);
-	$display->columns([
-		Column::string('first_name')->label('first_name'),
-		Column::string('email')->label('Email'),
-	]);
-	return $display;
-})->createAndEdit(function ()
-{
-	$form = AdminForm::form();
-	$form->items([
-		FormItem::text('email', 'Email'),
-		FormItem::password('password', 'Password'),
-		FormItem::timestamp('last_login', 'Last Login')->format('d.m.Y'),//->seconds(true),
-		FormItem::text('first_name', 'First Name'),
-		FormItem::text('last_name', 'Last Name'),
-		FormItem::multiselect('theroles', 'Роли')->model('App\Role')->display('name'),
-	]);
-	return $form;
+AdminSection::registerModel(User::class, function (ModelConfiguration $model) {
+    // Display
+    $model->onDisplay(function () {
+
+        $display = AdminDisplay::datatables()->setHtmlAttribute('class', 'table-primary');
+        $display->setOrder([[1, 'asc']]);
+
+        $display->setColumns([
+            AdminColumn::link('first_name')->setLabel('Имя пользователя')->setWidth('100px'),
+            AdminColumn::link('email')->setLabel('Почта')->setWidth('100px'),
+        ]);
+        return $display;
+    });
+    // Create And Edit
+    $model->onCreateAndEdit(function() {
+        return AdminForm::form()->setItems([
+            AdminFormElement::text('email', 'Почта')->required(),
+            AdminFormElement::password('password', 'Пароль')->required(),
+            AdminFormElement::timestamp('last_login', 'Last Login'),//->seconds(true),
+            AdminFormElement::text('first_name', 'First Name'),
+            AdminFormElement::text('last_name', 'Last Name'),
+            AdminFormElement::multiselect('theroles', 'Роли')->setModelForOptions('App\Role')->setDisplay('name'),
+        ]);
+    });
 });

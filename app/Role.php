@@ -6,6 +6,7 @@ use Cartalyst\Sentinel\Roles\EloquentRole;
 
 class Role extends EloquentRole
 {
+
     public function permits()
     {
         return $this->belongsToMany('App\Permit');
@@ -19,7 +20,7 @@ class Role extends EloquentRole
         if (isset($permits))
             foreach($permits as $permitid)
             {
-                $permit = \App\Permit::find($permitid);
+                $permit = Permit::find($permitid);
                 $this->addPermission($permit->slug);
             }
 
