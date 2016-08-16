@@ -2,15 +2,17 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Request;
-use Kalnoy\Nestedset\Node;
+use Kalnoy\Nestedset\NodeTrait;
 use Angrydeer\Attachfiles\AttachableTrait;
 use Angrydeer\Attachfiles\AttachableInterface;
 use Sentinel;
 
-class Category extends Node implements AttachableInterface
+class Category extends Model implements AttachableInterface
 {
     use AttachableTrait;
+    use NodeTrait;
 
     /**
      * The attributes that are mass assignable.

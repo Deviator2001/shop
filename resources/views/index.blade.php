@@ -1,5 +1,5 @@
 @extends('layouts.master')
 
 @section('body')
-    555
+    <a href="/category">Каталог товаров</a>
 @endsection

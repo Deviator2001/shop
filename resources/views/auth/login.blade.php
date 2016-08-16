@@ -15,4 +15,4 @@
     {!! Form::close() !!}
     <p><a href="{{URL::to('/reset')}}">Забыли пароль?</a></p>
     <p><a href="{{URL::to('/register')}}">Зарегистрироваться</a></p>
-@stop
+@endsection

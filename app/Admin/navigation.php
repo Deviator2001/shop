@@ -20,13 +20,13 @@ return [
         ]
     ],
     [
-        'title' => "Content",
+        'title' => "Товар",
         'icon' => 'fa fa-newspaper-o',
         'pages' => [
-            (new Page(\App\User::class))
+            (new Page(\App\product::class))
                 ->setIcon('fa fa-newspaper-o')
                 ->setPriority(0),
-            (new Page(\App\Post::class))
+            (new Page(\App\Category::class))
                 ->setIcon('fa fa-newspaper-o')
                 ->setPriority(10),
             (new Page(\App\Search::class))
@@ -38,7 +38,7 @@ return [
         ]
     ],
     [
-        'title' => 'Permissions',
+        'title' => 'Доступ и разрешения',
         'icon' => 'fa fa-group',
         'pages' => [
             (new Page(\App\User::class))
