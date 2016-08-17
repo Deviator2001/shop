@@ -21,7 +21,7 @@
 <div class="row">
 <div class="col-sm-8">
 <div class="jumbotron">
-    <img src="images/logo/logo.jpg" width="60%"/>
+    <img src="/images/logo/logo.jpg" width="60%"/>
 </div>
 </div>
 <div class="col-sm-4">

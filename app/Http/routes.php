@@ -62,7 +62,7 @@ Route::group(['middleware' => ['web']], function () {
 // о том, что письмо отправлено и надо заглянуть в почтовый ящик.
     Route::get('wait', 'AuthController@wait');
 
-    Route::get('category/{slug?}', 'CategoryController@show');
+    Route::get('category/{id?}', 'CategoryController@show');
     Route::get('attaches/{date}/{filename}', function ($date,$filename)
     {
         return Storage::get('attaches/'.$date.'/'.$filename);
