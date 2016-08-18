@@ -22,7 +22,8 @@ class CategoryController extends Controller
         if ($node = Category::find($id))
         {
             $many = false;
-            return view('category.show', compact('node','many'));
+            $products=Category::find($node->id)->products()->paginate(10);
+            return view('category.show', compact('node','many', 'products'));
         }
 
         abort(404);

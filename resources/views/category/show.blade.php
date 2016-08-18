@@ -1,8 +1,8 @@
 @extends('layouts.master')
 @section('body')
 <div class="container-fluid">
+<h3><p>Каталог товаров интернет магазина</h3>
 @if($many)
-    <h3><p>Каталог товаров интернет магазина</h3>
     <ul class="menu-ul">
         @foreach($nodes as $node)
                 <li><h4><span>{{$node->name}}</span></h4></li>
@@ -16,7 +16,7 @@
         @endforeach
     </ul>
 @else
-    <h3>{{$node->name}}</h3>
+    <h2>{{$node->name}}</h2>
     @if($node->getDescendantCount()>0)
         <ul class="sub-menu-ul">
             @foreach($node->descendants->toTree($node) as $descend)
@@ -24,9 +24,21 @@
             @endforeach
         </ul>
     @endif
-    @foreach($node->attaches as $attach)
-        <a rel="gallery" class="photo" href="/images/{{($attach->filename)}}"><img src="{{URL::to($attach->filename)}}" alt="{{$attach->alt}}" title="{{$attach->title}}" width="171">
-    @endforeach
+
+    <h3>Товары категории</h3>
+    <ul>
+            @foreach($products as $product)
+                <li>
+                    @if($product->attaches()->count() > 0)
+                        {{$product->attaches->title}}
+                        <img src="{{URL::to($product->attaches->first()->filename)}}" alt="{{$product->attaches->first()->alt}} title="{{$product->attaches->first()->title}}>
+                    @endif
+                    <a href="{{URL::to('product/'.$node->id.'/'.$product->id)}}">{{$product->title}}</a>
+                </li>
+            @endforeach
+    </ul>
+    {!! $products->links() !!}
+
     <h3></h3>
     <style>.ibl {display:inline-block;}</style>
     <li class="ibl"><a href="{{URL::to('/category/')}}">Главная</a></li>

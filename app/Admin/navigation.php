@@ -23,18 +23,15 @@ return [
         'title' => "Товар",
         'icon' => 'fa fa-newspaper-o',
         'pages' => [
-            (new Page(\App\product::class))
+            (new Page(\App\brand::class))
                 ->setIcon('fa fa-newspaper-o')
                 ->setPriority(0),
             (new Page(\App\Category::class))
                 ->setIcon('fa fa-newspaper-o')
                 ->setPriority(10),
-            (new Page(\App\Search::class))
-                ->setIcon('fa fa-newspaper-o')
-                ->setPriority(20),
             (new Page(\App\product::class))
                 ->setIcon('fa fa-newspaper-o')
-                ->setPriority(30),
+                ->setPriority(20),
         ]
     ],
     [
@@ -49,7 +46,7 @@ return [
                 ->setPriority(100),
             (new Page(\App\Permit::class))
                 ->setIcon('fa fa-group')
-                ->setPriority(200)
+                ->setPriority(200)->setTitle('Доступ')
         ]
     ]
 ];

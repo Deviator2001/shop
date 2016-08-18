@@ -63,6 +63,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('wait', 'AuthController@wait');
 
     Route::get('category/{id?}', 'CategoryController@show');
+    Route::get('product/{categoryid}/{productid}', 'ProductController@show');
+
     Route::get('attaches/{date}/{filename}', function ($date,$filename)
     {
         return Storage::get('attaches/'.$date.'/'.$filename);
