@@ -17,7 +17,7 @@
     @endforeach
 @endif
 
-<li><h4>Производитель:</h4> {{$product->brand->name}}</li>
+<li><h4>Производитель:</h4> {{$brand}}</li>
 <li><h4>Товар:</h4> {{$product->model}}</li>
 
 <li><h4>Цена:</h4> {{$product->price}}</li>
@@ -29,7 +29,7 @@
 <li><h4>Описание:</h4></li>
 {!!$product->descr !!}
 
-<li><a href="/addtocart/{{$product->id}}" class="btn btn-success pull-left" role="button">Добавить в корзину</a></li><br>
+<li><a href="/product/add/{{$product->id}}" class="btn btn-success pull-left" role="button">Добавить в корзину</a></li><br>
 <li><h4>Входит в категории:</h4></li>
 {{info($product->categories)}}
 
