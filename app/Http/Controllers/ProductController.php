@@ -2,16 +2,18 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Product;
+use App\product;
 use App\Category;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Http\Request;
+use Session;
+use App\Cart;
 
 class ProductController extends Controller
 {
 
     public function show($categoryid, $productid)
     {
-        if ( $product = Product::find($productid))
+        if ( $product = product::find($productid))
         {
             $brand = $product->brand->name;
             $parentCategores=$product->categories;
@@ -21,15 +23,27 @@ class ProductController extends Controller
         abort(404);
     }
 
-    public function getAddToCart(Request $request, $id)
+    public function addtocart(Request $request, $id)
     {
-        $product = Product::find($id);
+        $product = product::find($id);
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
         $cart->add($product, $product->id);
         $request->session()->put('cart', $cart);
-        dd($request->session()->get('cart'));
-        return redirect()->route('product.show');
+        return redirect()->back();
 
     }
+
+    public function showcart()
+    {
+        if (!Session::has('cart'))
+        {
+            return view('cart.show', ['products' => null]);
+        }
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+        return view('cart.show', ['products'=>$cart->items, 'totalPrice'=>$cart->totalPrice]);
+    }
+
+
 }

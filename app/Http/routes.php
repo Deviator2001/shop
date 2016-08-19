@@ -65,12 +65,13 @@ Route::group(['middleware' => ['web']], function () {
 
 
 //Вывод страницы категории
-    Route::get('category/{id?}', 'CategoryController@show');
+Route::get('category/{id?}', ['as' => 'category.show', 'uses'=>'CategoryController@show']);
 //Вывод страницы продукта
 Route::get('product/{categoryid}/{productid}', ['as' => 'product.show', 'uses'=>'ProductController@show']);
-Route::get('product/add/{id}', ['as' => 'product.add', 'uses' => 'ProductController@getAddToCart']);
 //Добавление товара в корзину
-Route::get('cart', ['as' => 'cart.index', 'uses' => 'CartController@index']);
+Route::get('addtocart/{id}', ['as' => 'product.add', 'uses' => 'ProductController@addtocart']);
+//Содержимое корзины
+Route::get('cart', ['as' => 'product.cart', 'uses' => 'ProductController@showcart']);
 Route::get('cart/add/{id}', ['as' => 'cart.add', 'uses' => 'CartController@add']);
 
 

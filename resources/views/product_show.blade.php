@@ -29,7 +29,7 @@
 <li><h4>Описание:</h4></li>
 {!!$product->descr !!}
 
-<li><a href="/product/add/{{$product->id}}" class="btn btn-success pull-left" role="button">Добавить в корзину</a></li><br>
+<li><a href="/addtocart/{{$product->id}}" class="btn btn-success pull-left" role="button">Добавить в корзину</a></li><br>
 <li><h4>Входит в категории:</h4></li>
 {{info($product->categories)}}
 

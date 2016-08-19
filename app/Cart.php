@@ -2,9 +2,7 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-
-class Cart extends Model
+class Cart
 {
     public $items = null;
     public $totalQty = 0;
