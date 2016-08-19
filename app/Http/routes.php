@@ -62,8 +62,18 @@ Route::group(['middleware' => ['web']], function () {
 // о том, что письмо отправлено и надо заглянуть в почтовый ящик.
     Route::get('wait', 'AuthController@wait');
 
+
+
+//Вывод страницы категории
     Route::get('category/{id?}', 'CategoryController@show');
+//Вывод страницы продукта
     Route::get('product/{categoryid}/{productid}', 'ProductController@show');
+
+//Добавление товара в корзину
+Route::get('cart', ['as' => 'cart.index', 'uses' => 'CartController@index']);
+Route::get('cart/add/{id}', ['as' => 'cart.add', 'uses' => 'CartController@add']);
+
+
 
     Route::get('attaches/{date}/{filename}', function ($date,$filename)
     {

@@ -17,24 +17,24 @@
     @endforeach
 @endif
 
-<h3>Производитель: {{$product->brand->name}}</h3>
-<h3>Товар: {{$product->model}}</h3>
+<li><h4>Производитель:</h4> {{$product->brand->name}}</li>
+<li><h4>Товар:</h4> {{$product->model}}</li>
 
-<h3>Цена: {{$product->price}}</h3>
-<h3>Артикул: {{$product->id}}</h3>
+<li><h4>Цена:</h4> {{$product->price}}</li>
+<li><h4>Артикул:</h4> {{$product->id}}</li>
 
-<h3>Аннотация:</h3>
+<li><h4>Аннотация:</h4></li>
 {!! $product->mini_descr !!}
 
-<h3>Описание:</h3>
+<li><h4>Описание:</h4></li>
 {!!$product->descr !!}
 
-<h3>Входит в категории:</h3>
-
+<li><a href="/addtocart/{{$product->id}}" class="btn btn-success pull-left" role="button">Добавить в корзину</a></li><br>
+<li><h4>Входит в категории:</h4></li>
 {{info($product->categories)}}
 
 @foreach($product->parentCategories as $cat)
 
-    <li>-><a href="{{URL::to('/category/'.$cat->id)}}">{{$cat->name}}</a></li>
+    <h5>-><a href="{{URL::to('/category/'.$cat->id)}}">{{$cat->name}}</a></h5>
 @endforeach
 @endsection
