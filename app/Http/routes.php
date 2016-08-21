@@ -72,6 +72,8 @@ Route::get('product/{categoryid}/{productid}', ['as' => 'product.show', 'uses'=>
 Route::get('addtocart', ['as' => 'product.add', 'uses' => 'ProductController@addtocart']);
 //Содержимое корзины
 Route::get('cart', ['as' => 'product.cart', 'uses' => 'ProductController@showcart']);
+//Удаление товара из корзины
+Route::get('removeitem/{id}', ['as' => 'product.remove', 'uses' => 'ProductController@remove']);
 
 
 

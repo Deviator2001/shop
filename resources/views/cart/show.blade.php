@@ -37,7 +37,7 @@
                         </td>
                         <td class="col-sm-1 col-md-1 text-center"><strong>${{$product['price']}}</strong></td>
                         <td class="col-sm-1 col-md-1">
-                            <a href="/removeItem/{{$product['qty']}}"> <button type="button" class="btn btn-danger">
+                            <a href="/removeitem/{{$product['item']['id']}}"> <button type="button" class="btn btn-danger">
                                     <span class="fa fa-remove"></span> Удалить
                                 </button>
                             </a>
