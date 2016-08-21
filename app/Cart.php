@@ -5,6 +5,7 @@ namespace App;
 class Cart
 {
     public $items = null;
+    public $qty = 0;
     public $totalQty = 0;
     public $totalPrice = 0;
 
@@ -13,26 +14,28 @@ class Cart
         if($oldCart)//проверка на существование старой корзины, если сущ, новой присваиваем ее значения
         {
             $this->items = $oldCart->items;
+            $this->qty = $oldCart->qty;
             $this->totalQty = $oldCart->totalQty;
             $this->totalPrice = $oldCart->totalPrice;
         }
 
     }
 
-    public function add($item, $id)
+    public function add($item, $id, $qtyadd)
     {
+
         $storedItem = ['qty'=>0, 'price'=>$item->price, 'item'=>$item];
-        if($this->items)
+        if($this->items)//проверка на наличие товаров в корзине
         {
-            if(array_key_exists($id, $this->items))
+            if(array_key_exists($id, $this->items))//проверка на наличие данного товара в корзине
             {
-                $storedItem = $this->items[$id];
+                $storedItem = $this->items[$id];//если товар есть ему присваиваются существующие значения
             }
         }
-        $storedItem['qty']++;
-        $storedItem['price'] = $item->price * $storedItem['qty'];
-        $this->items[$id] = $storedItem;
-        $this->totalQty++;
-        $this->totalPrice += $item->price;
+        $storedItem['qty']+=$qtyadd;//добавляется количество товара
+        $storedItem['price'] = $item->price * $storedItem['qty'];//общая цена товара
+        $this->items[$id] = $storedItem;//в содержимое корзины заносится данный экземпляр товара
+        $this->totalQty = count($this->items);
+        $this->totalPrice += $item->price* $storedItem['qty'];;
     }
 }

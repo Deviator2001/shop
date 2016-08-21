@@ -69,10 +69,9 @@ Route::get('category/{id?}', ['as' => 'category.show', 'uses'=>'CategoryControll
 //Вывод страницы продукта
 Route::get('product/{categoryid}/{productid}', ['as' => 'product.show', 'uses'=>'ProductController@show']);
 //Добавление товара в корзину
-Route::get('addtocart/{id}', ['as' => 'product.add', 'uses' => 'ProductController@addtocart']);
+Route::get('addtocart', ['as' => 'product.add', 'uses' => 'ProductController@addtocart']);
 //Содержимое корзины
 Route::get('cart', ['as' => 'product.cart', 'uses' => 'ProductController@showcart']);
-Route::get('cart/add/{id}', ['as' => 'cart.add', 'uses' => 'CartController@add']);
 
 
 

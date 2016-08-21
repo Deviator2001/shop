@@ -8,6 +8,7 @@
                 <thead>
                 <tr>
                     <th>Товар</th>
+                    <th></th>
                     <th>Количество</th>
                     <th class="text-center">Цена</th>
                     <th class="text-center">Сумма</th>
@@ -24,6 +25,9 @@
                                     <h4 class="media-heading"><a href="#">{{$product['item']['model']}}</a></h4>
                                 </div>
                             </div>
+                        </td>
+                        <td>
+
                         </td>
                         <td class="col-sm-1 col-md-1" style="text-align: center">
                             {{$product['qty']}}
@@ -42,6 +46,7 @@
                 @endforeach
 
                 <tr>
+                    <td>   </td>
                     <td>   </td>
                     <td>   </td>
                     <td>   </td>
@@ -69,6 +74,8 @@
             </table>
         </div>
     </div>
+    @else
+        <h1>В корзине нет ни одного товара</h1>
     @endif
 
 @endsection

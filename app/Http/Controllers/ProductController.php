@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\product;
 use App\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use Session;
 use App\Cart;
 
@@ -23,12 +24,15 @@ class ProductController extends Controller
         abort(404);
     }
 
-    public function addtocart(Request $request, $id)
+    public function addtocart(Request $request)
     {
-        $product = product::find($id);
-        $oldCart = Session::has('cart') ? Session::get('cart') : null;
-        $cart = new Cart($oldCart);
-        $cart->add($product, $product->id);
+        $id = Input::get('id');//получаем id добавляемого товара
+        $qtyadd = Input::get('qtyadd');//получаем количесво добавляемого товара
+
+        $product = product::find($id);//получаем экземпляр товара из таблицы по его id
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;//проверяем задана ли переменная cart в массиве сессии, если устанвливаем ее и присваиваем null
+        $cart = new Cart($oldCart);//создаем новый экземпляр корзины, в конструктор модели Cart передаем $oldCart
+        $cart->add($product, $product->id, $qtyadd);
         $request->session()->put('cart', $cart);
         return redirect()->back();
 

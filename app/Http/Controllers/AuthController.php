@@ -15,6 +15,7 @@ use Validator;
 use Mail;
 use Storage;
 use CurlHttp;
+use Session;
 
 class AuthController extends Controller
 {
@@ -271,6 +272,7 @@ class AuthController extends Controller
      */
     public function logoutuser()
     {
+        Session::forget('cart');
         Sentinel::logout();
         return Redirect::intended('/');
     }
