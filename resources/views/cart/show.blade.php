@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('body')
     @if (Session::has('cart'))
-
+    <h1>В вашу корзину добавлены следующие товары:</h1>
     <div class="row">
         <div class="col-sm-12 col-md-10 col-md-offset-1">
             <table class="table table-hover">
@@ -22,7 +22,7 @@
                             <div class="media">
                                 <a class="thumbnail pull-left" href="#"> <img class="media-object" src="" style="width: 100px; height: 72px;"> </a>
                                 <div class="media-body">
-                                    <h4 class="media-heading"><a href="#">{{$product['item']['model']}}</a></h4>
+                                    <h4 class="media-heading"><a href="/product/{{$product['cat']}}/{{$product['item']['id']}}">{{$product['item']['model']}}</a></h4>
                                 </div>
                             </div>
                         </td>

@@ -32,6 +32,7 @@
 <li><h4>Количество:</h4></li>
 <form action="/addtocart" method="get">
 <input type = "hidden" name = "id" value = "{{$product->id}}">
+<input type = "hidden" name = "cat" value = "{{$pathCategory->id}}">
 <select name="qtyadd">
     <option value="1">1</option>
     <option value="2">2</option>

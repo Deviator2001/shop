@@ -21,21 +21,21 @@ class Cart
 
     }
 
-    public function add($item, $id, $qtyadd)
+    public function add($item, $id, $qtyadd, $cat)
     {
 
-        $storedItem = ['qty'=>0, 'price'=>$item->price, 'item'=>$item];
+        $storedItem = ['qty'=>0, 'price'=>$item->price, 'item'=>$item, 'cat'=>$cat];
         if($this->items)//проверка на наличие товаров в корзине
         {
-            if(array_key_exists($id, $this->items))//проверка на наличие данного товара в корзине
+            if(array_key_exists($id, $this->items))//проверка на наличие товара с данным id в товарах корзины $this->items
             {
-                $storedItem = $this->items[$id];//если товар есть ему присваиваются существующие значения
+                $storedItem = $this->items[$id];//если товар уже есть ему присваиваются существующие значения из корзины
             }
         }
         $storedItem['qty']+=$qtyadd;//добавляется количество товара
-        $storedItem['price'] = $item->price * $storedItem['qty'];//общая цена товара
+        $storedItem['price'] = $item->price * $storedItem['qty'];//общая цена товара данного id
         $this->items[$id] = $storedItem;//в содержимое корзины заносится данный экземпляр товара
-        $this->totalQty = count($this->items);
-        $this->totalPrice += $item->price* $storedItem['qty'];;
+        $this->totalQty = count($this->items);//общее число товаров равно кол-ву записей
+        $this->totalPrice = array_sum(array_column($this->items, 'price'));//общая сумма товаров в корзине
     }
 }
