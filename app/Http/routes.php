@@ -38,43 +38,56 @@ Route::get('/schedule', ['as' => 'schedule.index', 'uses' => 'ScheduleController
 Route::get('login', 'AuthController@login');
 // Пользователь заполнил форму авторизации и отправил
 Route::post('login', 'AuthController@loginProcess');
+// Вызов страницы регистрации пользователя
+Route::get('register', 'AuthController@register');
+// Пользователь заполнил форму регистрации и отправил
+Route::post('register', 'AuthController@registerProcess');
+// Пользователь получил письмо для активации аккаунта со ссылкой сюда
+Route::get('activate/{id}/{code}', 'AuthController@activate');
+
+// Пользователь забыл пароль и запросил сброс пароля. Это начало процесса -
+// Страница с запросом E-Mail пользователя
+Route::get('reset', 'AuthController@resetOrder');
+// Пользователь заполнил и отправил форму с E-Mail в запросе на сброс пароля
+Route::post('reset', 'AuthController@resetOrderProcess');
+// Пользователю пришло письмо со ссылкой на эту страницу для ввода нового пароля
+Route::get('reset/{id}/{code}', 'AuthController@resetComplete');
+// Пользователь ввел новый пароль и отправил.
+Route::post('reset/{id}/{code}', 'AuthController@resetCompleteProcess');
+// Сервисная страничка, показываем после заполнения рег формы, формы сброса и т.
+// о том, что письмо отправлено и надо заглянуть в почтовый ящик.
+Route::get('wait', 'AuthController@wait');
+
+
+
+
 
 
 Route::group(['middleware' => ['web']], function () {
-// Вызов страницы регистрации пользователя
-    Route::get('register', 'AuthController@register');
-// Пользователь заполнил форму регистрации и отправил
-    Route::post('register', 'AuthController@registerProcess');
-// Пользователь получил письмо для активации аккаунта со ссылкой сюда
-    Route::get('activate/{id}/{code}', 'AuthController@activate');
 
 // Выход пользователя из системы
-    Route::get('logout', 'AuthController@logoutuser');
-// Пользователь забыл пароль и запросил сброс пароля. Это начало процесса -
-// Страница с запросом E-Mail пользователя
-    Route::get('reset', 'AuthController@resetOrder');
-// Пользователь заполнил и отправил форму с E-Mail в запросе на сброс пароля
-    Route::post('reset', 'AuthController@resetOrderProcess');
-// Пользователю пришло письмо со ссылкой на эту страницу для ввода нового пароля
-    Route::get('reset/{id}/{code}', 'AuthController@resetComplete');
-// Пользователь ввел новый пароль и отправил.
-    Route::post('reset/{id}/{code}', 'AuthController@resetCompleteProcess');
-// Сервисная страничка, показываем после заполнения рег формы, формы сброса и т.
-// о том, что письмо отправлено и надо заглянуть в почтовый ящик.
-    Route::get('wait', 'AuthController@wait');
+Route::get('logout', 'AuthController@logoutuser');
+
 
 
 
 //Вывод страницы категории
-Route::get('category/{id?}', ['as' => 'category.show', 'uses'=>'CategoryController@show']);
+
+    Route::get('category/{id?}', ['as' => 'category.show', 'uses'=>'CategoryController@show']);
 //Вывод страницы продукта
-Route::get('product/{productid}', ['as' => 'product.show', 'uses'=>'ProductController@show']);
+    Route::get('product/{productid}', ['as' => 'product.show', 'uses'=>'ProductController@show']);
 //Добавление товара в корзину
-Route::get('addtocart', ['as' => 'product.add', 'uses' => 'ProductController@addtocart']);
+    Route::get('addtocart', ['as' => 'product.add', 'uses' => 'ProductController@addtocart']);
 //Содержимое корзины
-Route::get('cart', ['as' => 'product.cart', 'uses' => 'ProductController@showcart']);
+    Route::get('cart', ['as' => 'product.cart', 'uses' => 'ProductController@showcart']);
 //Удаление товара из корзины
-Route::get('removeitem/{id}', ['as' => 'product.remove', 'uses' => 'ProductController@remove']);
+    Route::get('removeitem/{id}', ['as' => 'product.remove', 'uses' => 'ProductController@remove']);
+
+//Оформление заказа
+    Route::get('order', ['as' => 'order.form', 'uses' => 'OrderController@show']);
+
+
+
 
 
 

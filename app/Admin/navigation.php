@@ -35,6 +35,22 @@ return [
         ]
     ],
     [
+        'title' => "Доставка и оплата",
+        'icon' => 'fa fa-newspaper-o',
+        'pages' => [
+            (new Page(\App\Delivery::class))
+                ->setIcon('fa fa-newspaper-o')
+                ->setPriority(0)->setTitle('Способ доставки'),
+            (new Page(\App\Payment::class))
+                ->setIcon('fa fa-newspaper-o')
+                ->setPriority(10)->setTitle('Способ оплаты'),
+        ]
+    ],
+
+
+
+
+    [
         'title' => 'Доступ и разрешения',
         'icon' => 'fa fa-group',
         'pages' => [

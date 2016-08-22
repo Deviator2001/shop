@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableCarts extends Migration
+class CreateTablePayments extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,9 @@ class CreateTableCarts extends Migration
      */
     public function up()
     {
-        Schema::create('carts', function(Blueprint $table)
-        {
+        Schema::create('payments', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('member_id');
-            $table->integer('product_id');
-            $table->integer('amount');
-            $table->decimal('total',10,2);
+            $table->text('title');
             $table->timestamps();
         });
     }
