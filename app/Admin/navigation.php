@@ -25,10 +25,10 @@ return [
         'pages' => [
             (new Page(\App\brand::class))
                 ->setIcon('fa fa-newspaper-o')
-                ->setPriority(0),
+                ->setPriority(0)->setTitle('Производители'),
             (new Page(\App\Category::class))
                 ->setIcon('fa fa-newspaper-o')
-                ->setPriority(10),
+                ->setPriority(10)->setTitle('Категории'),
             (new Page(\App\product::class))
                 ->setIcon('fa fa-newspaper-o')
                 ->setPriority(20)->setTitle('Товар'),

@@ -22,7 +22,7 @@
                             <div class="media">
                                 <a class="thumbnail pull-left" href="#"> <img class="media-object" src="" style="width: 100px; height: 72px;"> </a>
                                 <div class="media-body">
-                                    <h5 class="media-heading"><a href="/product/{{$product['cat']}}/{{$product['item']['id']}}">{{$product['item']['model']}}</a></h5>
+                                    <h5 class="media-heading"><a href="/product/{{$product['item']['id']}}">{{$product['item']['model']}}</a></h5>
                                 </div>
                             </div>
                         </td>
@@ -58,7 +58,7 @@
                     <td>   </td>
                     <td>   </td>
                     <td>
-                        <a href="/"> <button type="button" class="btn btn-default">
+                        <a href="/category"> <button type="button" class="btn btn-default">
                                 <span class="fa fa-shopping-cart"></span> Продолжить Покупки
                             </button>
                         </a>

@@ -1,7 +1,7 @@
 <ul class="nav navbar-nav">
-    <li><a href="/">О нас</a></li>
+    <li><a href="/category">Каталог товаров</a></li>
     <li><a href="/post/index">Новости</a></li>
-    <li><a href="/contacts">Контакты</a></li>
+    <li><a href="/">Контакты</a></li>
 </ul>
 <ul class="nav navbar-nav navbar-right">
             <li><a href="{{ url('/cart') }}"><span class="glyphicon glyphicon-shopping-cart"></span>Корзина</a></li>
@@ -29,8 +29,8 @@
 <h1>
 Интернет магазин цифровой техники
 </h1>
-    <form id="search" action="search.php" method="get">
-          <input type="text" name="q" placeholder="Поиск...">
+    <form id="search" action="/search" method="get">
+          <input type="text" name="q" id = "search" placeholder="Поиск...">
         <input type="submit" value="Найти">
     </form>
 </div>

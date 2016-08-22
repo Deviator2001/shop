@@ -15,14 +15,14 @@ class product extends Model implements AttachableInterface
     protected $table = 'products';//указываем с какой таблицей базы данных работает данная модель
 
 
-    public function categories()
+    public function category()
     {
-        return $this->belongsToMany('App\Category');
+        return $this->belongsTo('App\Category');
     }
 
-    public function parentCategories()
+    public function parentCategory()
     {
-        return $this->belongsToMany('App\Category');
+        return $this->belongsTo('App\Category');
     }
 
     public function brand()

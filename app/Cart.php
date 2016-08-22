@@ -21,10 +21,10 @@ class Cart
 
     }
 
-    public function add($item, $id, $qtyadd, $cat)
+    public function add($item, $id, $qtyadd)
     {
 
-        $storedItem = ['qty'=>0, 'price'=>$item->price, 'item'=>$item, 'cat'=>$cat];//создаем экземпляр (строку) товара в корзине
+        $storedItem = ['qty'=>0, 'price'=>$item->price, 'item'=>$item];//создаем экземпляр (строку) товара в корзине
         if($this->items)//проверка на наличие товаров в корзине
         {
             if(array_key_exists($id, $this->items))//проверка на наличие товара с данным id в товарах корзины $this->items

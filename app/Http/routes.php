@@ -22,7 +22,8 @@
 | kernel and includes session state, CSRF protection, and more.
 |
 */
-Route::get('search', ['as' => 'site-search', 'uses' => 'SearchController@index']);
+//Поиск товара на сайте
+Route::get('search', ['as' => 'product.search', 'uses' => 'ProductController@search']);
 
 //Route::post('/', 'IndexController@search');
 
@@ -67,7 +68,7 @@ Route::group(['middleware' => ['web']], function () {
 //Вывод страницы категории
 Route::get('category/{id?}', ['as' => 'category.show', 'uses'=>'CategoryController@show']);
 //Вывод страницы продукта
-Route::get('product/{categoryid}/{productid}', ['as' => 'product.show', 'uses'=>'ProductController@show']);
+Route::get('product/{productid}', ['as' => 'product.show', 'uses'=>'ProductController@show']);
 //Добавление товара в корзину
 Route::get('addtocart', ['as' => 'product.add', 'uses' => 'ProductController@addtocart']);
 //Содержимое корзины

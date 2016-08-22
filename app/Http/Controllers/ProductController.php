@@ -12,14 +12,13 @@ use App\Cart;
 class ProductController extends Controller
 {
 
-    public function show($categoryid, $productid)
+    public function show($productid)
     {
         if ( $product = product::find($productid))
         {
             $brand = $product->brand->name;
-            $parentCategores=$product->categories;
-            $pathCategory=Category::find($categoryid);
-            return view('product_show', compact('product', 'brand', 'parentCategores', 'pathCategory'));
+            $pathCategory=$product->category;//Непосредственная категория товара (массив)
+            return view('product.show', compact('product', 'brand', 'pathCategory'));
         }
         abort(404);
     }
@@ -28,11 +27,10 @@ class ProductController extends Controller
     {
         $id = Input::get('id');//получаем id добавляемого товара
         $qtyadd = Input::get('qtyadd');//получаем количесво добавляемого товара
-        $cat = Input::get('cat');//получаем id категории добавляемого товара
         $product = product::find($id);//получаем экземпляр товара из таблицы по его id
         $oldCart = Session::has('cart') ? Session::get('cart') : null;//проверяем задана ли переменная cart в массиве сессии, если устанвливаем ее и присваиваем null
         $cart = new Cart($oldCart);//создаем новый экземпляр корзины, в конструктор модели Cart передаем $oldCart
-        $cart->add($product, $product->id, $qtyadd, $cat);//добавляем товары
+        $cart->add($product, $product->id, $qtyadd);//добавляем товары
         $request->session()->put('cart', $cart);//заносим массив корзины в переменную сессии
         return redirect()->back();
 
@@ -58,5 +56,15 @@ class ProductController extends Controller
         $request->session()->put('cart', $cart);//заносим массив корзины в переменную сессии
         return redirect()->back();
     }
+
+    public function search()
+    {
+        $q = Input::get('q');
+        $products = product::with('category')->where('model', 'LIKE', "%$q%")->get();
+        return view('product.search', ['products' => $products]);
+    }
+
+
+
 
 }

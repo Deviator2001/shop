@@ -33,7 +33,7 @@
                         {{$product->attaches->title}}
                         <img src="{{URL::to($product->attaches->first()->filename)}}" alt="{{$product->attaches->first()->alt}} title="{{$product->attaches->first()->title}}>
                     @endif
-                    <a href="{{URL::to('product/'.$node->id.'/'.$product->id)}}">{{$product->model, $product->brand}}</a>
+                    <a href="{{URL::to('product/'.$product->id)}}">{{$product->model}}</a>
                 </li>
             @endforeach
     </ul>

@@ -32,7 +32,6 @@
 <li><h4>Количество:</h4></li>
 <form action="/addtocart" method="get">
 <input type = "hidden" name = "id" value = "{{$product->id}}">
-<input type = "hidden" name = "cat" value = "{{$pathCategory->id}}">
 <select name="qtyadd">
     <option value="1">1</option>
     <option value="2">2</option>
@@ -50,10 +49,6 @@
 {!!$product->descr !!}
 
 <li><h4>Входит в категории:</h4></li>
-{{info($product->categories)}}
-
-@foreach($product->parentCategories as $cat)
-
-    <h5>-><a href="{{URL::to('/category/'.$cat->id)}}">{{$cat->name}}</a></h5>
-@endforeach
+{{info($product->category)}}
+    <h5>-><a href="{{URL::to('/category/'.$product->category->id)}}">{{$product->category->name}}</a></h5>
 @endsection
