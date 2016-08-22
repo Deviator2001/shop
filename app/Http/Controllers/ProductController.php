@@ -52,7 +52,7 @@ class ProductController extends Controller
     public function remove(Request $request, $id)
     {
         $product = product::find($id);//получаем экземпляр товара из таблицы по его id
-        $oldCart = Session::has('cart') ? Session::get('cart') : null;//проверяем задана ли переменная cart в массиве сессии, если устанвливаем ее и присваиваем null
+        $oldCart = Session::get('cart');//проверяем задана ли переменная cart в массиве сессии, если устанвливаем ее и присваиваем null
         $cart = new Cart($oldCart);//создаем новый экземпляр корзины, в конструктор модели Cart передаем $oldCart
         $cart->remove($product, $product->id);//удаляем выбранный товар
         $request->session()->put('cart', $cart);//заносим массив корзины в переменную сессии

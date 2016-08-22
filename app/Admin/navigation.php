@@ -31,7 +31,7 @@ return [
                 ->setPriority(10),
             (new Page(\App\product::class))
                 ->setIcon('fa fa-newspaper-o')
-                ->setPriority(20),
+                ->setPriority(20)->setTitle('Товар'),
         ]
     ],
     [

@@ -22,7 +22,7 @@
                             <div class="media">
                                 <a class="thumbnail pull-left" href="#"> <img class="media-object" src="" style="width: 100px; height: 72px;"> </a>
                                 <div class="media-body">
-                                    <h4 class="media-heading"><a href="/product/{{$product['cat']}}/{{$product['item']['id']}}">{{$product['item']['model']}}</a></h4>
+                                    <h5 class="media-heading"><a href="/product/{{$product['cat']}}/{{$product['item']['id']}}">{{$product['item']['model']}}</a></h5>
                                 </div>
                             </div>
                         </td>

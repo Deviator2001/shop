@@ -12,7 +12,7 @@
         @else
             <li><a href="{{ url('/admin') }}"><span class="glyphicon glyphicon-wrench"></span> Управление сайтом</a></li>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Sentinel::check()->email }} <span class="glyphicon glyphicon-user"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user"></span>{{ Sentinel::check()->email }}</a>
                 <ul class="dropdown-menu" role="menu">
                     <li><a href="{{ url('/logout') }}">Выйти</a></li>
                 </ul>
@@ -22,7 +22,7 @@
 <div class="row">
 <div class="col-sm-8">
 <div class="jumbotron">
-    <img src="/images/logo/logo.jpg" width="60%"/>
+    <img src="/images/logo/logo.jpg" width="80%"/>
 </div>
 </div>
 <div class="col-sm-4">
