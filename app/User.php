@@ -28,6 +28,11 @@ class User extends EloquentUser
         return $this->belongsToMany('App\Role', 'role_users', 'user_id', 'role_id');
     }
 
+    public function orders()
+    {
+        return $this->hasMany('App\Order');
+    }
+
     public function setTherolesAttribute($roles)
     {
         $this->theroles()->detach();

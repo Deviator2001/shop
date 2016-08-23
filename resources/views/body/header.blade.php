@@ -10,6 +10,7 @@
             <li><a href="{{ url('/login') }}"><span class="glyphicon glyphicon-log-in"></span> Войти</a></li>
             <li><a href="{{ url('/register') }}"><span class="glyphicon glyphicon-registration-mark"></span> Регистрация</a></li>
         @else
+        <li><a href="{{ url('/myorders/'.Sentinel::check()->id) }}"><span class="glyphicon glyphicon-share-alt"></span>Мои заказы</a></li>
             <li><a href="{{ url('/admin') }}"><span class="glyphicon glyphicon-wrench"></span> Управление сайтом</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user"></span>{{ Sentinel::check()->email }}</a>
