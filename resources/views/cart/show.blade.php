@@ -64,8 +64,8 @@
                         </a>
                     </td>
                     <td class="col-md-2">
-                        <a href="/order"> <button type="button" class="btn btn-success">
-                                <span class="fa fa-shopping-cart"></span> Оформление Заказа
+                        <a href="/order"> <button type="button" class="btn btn-succeess">
+                                <span class="fa fa-shopping-cart"></span> Оформить Заказ
                             </button>
                         </a>
                     </td>

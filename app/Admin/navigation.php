@@ -64,5 +64,18 @@ return [
                 ->setIcon('fa fa-group')
                 ->setPriority(200)->setTitle('Доступ')
         ]
-    ]
+    ],
+
+    [
+        'title' => "Заказы",
+        'icon' => 'fa fa-newspaper-o',
+        'pages' => [
+            (new Page(\App\order::class))
+                ->setIcon('fa fa-newspaper-o')
+                ->setPriority(0)->setTitle('Заказы'),
+
+        ]
+    ],
+
+
 ];

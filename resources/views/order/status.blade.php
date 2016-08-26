@@ -7,18 +7,32 @@
                 <table class="table table-hover">
                     <thead>
                     <tr>
-                        <th>Товар</th>
+                        <th>№Заказа</th>
                         <th></th>
-                        <th>Количество</th>
-                        <th class="text-center">Цена</th>
-                        <th class="text-center">Сумма</th>
+                        <th>Дата размещения</th>
+                        <th style="align-content: center">Сумма</th>
+                        <th class="text-center">Состояние</th>
                         <th> </th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach($orders as $order)
                         <tr>
-                        {{$order->id}}
+                            <td>
+                                {{$order->id}}
+                            </td>
+                            <td>
+
+                            </td>
+                            <td>
+                                {{$order->created_at}}
+                            </td>
+                            <td>
+                            {{$order->cart->totalPrice}}
+                            </td>
+                            <td>
+                                {{$order->status}}
+                            </td>
                         </tr>
                     @endforeach
                  </table>

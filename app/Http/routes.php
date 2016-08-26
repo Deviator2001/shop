@@ -62,9 +62,6 @@ Route::get('wait', 'AuthController@wait');
 
 
 
-
-Route::group(['middleware' => ['web']], function () {
-
 // Выход пользователя из системы
 Route::get('logout', 'AuthController@logoutuser');
 
@@ -86,10 +83,8 @@ Route::get('logout', 'AuthController@logoutuser');
 //Оформление заказа
     Route::get('order', ['as' => 'order.form', 'uses' => 'OrderController@show']);
     Route::post('order/add', ['as' => 'order.add', 'uses' => 'OrderController@orderadd']);
-
 //Состояние заказов
-    Route::get('myorders/{id}', ['as' => 'order.status', 'uses' => 'OrderController@status']);
-
+    Route::get('myorders', ['as' => 'order.status', 'uses' => 'OrderController@status']);
 
 
 
@@ -119,7 +114,3 @@ Route::get('logout', 'AuthController@logoutuser');
     Route::get('galery/{galery}', ['as' => 'galery.show', 'uses' => 'GaleryController@show']);
     Route::get('galery/{galery}/edit', ['as' => 'galery.edit', 'uses' => 'GaleryController@edit']);
     Route::post('galery/{galery}', ['as' => 'galery.update', 'uses' => 'GaleryController@update']);
-
-
-
-});

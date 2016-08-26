@@ -7,6 +7,7 @@ use App\Order;
 use App\Payment;
 use App\Http\Requests;
 use App\User;
+use Illuminate\Support\Facades\Redirect;
 use Sentinel;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
@@ -35,11 +36,18 @@ class OrderController extends Controller
             'descr' => Input::get('descr'),
             'cart' => serialize($cart)
         ]);
+        Session::forget('cart');
+        return Redirect::intended('/');
     }
 
-    public function status($id)
+    public function status()
     {
-        $orders = User::find($id)->orders;
+        $orders = User::find(Sentinel::check()->id)->orders;//получаем все заказы по id авторизованного пользователя
+        $orders->transform(function($order, $key)//функция десериализации переменной cart в заказе
+        {
+            $order->cart = unserialize($order->cart);
+            return $order;
+        });
         return view('order.status', compact('orders'));
     }
 }
