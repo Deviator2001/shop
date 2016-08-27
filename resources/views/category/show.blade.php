@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('body')
-<div class="container-fluid">
 <h3><p>Каталог товаров интернет магазина</h3>
+<div class="container-fluid">
 @if($many)
     <ul class="menu-ul">
         @foreach($nodes as $node)

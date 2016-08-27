@@ -6,6 +6,7 @@ use App\product;
 use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Response;
 use Session;
 use App\Cart;
 
@@ -62,6 +63,16 @@ class ProductController extends Controller
         $q = Input::get('q');
         $products = product::with('category')->where('model', 'LIKE', "%$q%")->get();
         return view('product.search', ['products' => $products]);
+    }
+
+    public function popupcallorderajax(Request $request)
+    {
+        return Response::json(array('error' => '1', 'message' => 'усё окей шеффф'));
+    }
+
+    public function st()
+    {
+        return view('ajax');
     }
 
 

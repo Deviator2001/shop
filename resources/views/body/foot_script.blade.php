@@ -20,4 +20,25 @@
 
         });
     });
+    function AjaxFormRequest(result_id, error_id, form_id,url) {
+        jQuery.ajax({
+            url:     url, //Адрес подгружаемой страницы
+            type:     "POST", //Тип запроса
+            dataType: "html", //Тип данных
+            data: jQuery("#"+form_id).serialize(),
+            success: function(response) { //Если все нормально
+                var res = jQuery.parseJSON(response);
+                if(res.error==0){
+                    document.getElementById(result_id).innerHTML = res.message;
+                    $('.popuporderform').remove();
+                } else {
+                    document.getElementById(error_id).innerHTML = res.message;
+                }
+
+            },
+            error: function(response) { //Если ошибка
+                document.getElementById(result_id).innerHTML = "Ошибка при отправке формы";
+            }
+        });
+    }
 </script>
