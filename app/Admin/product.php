@@ -10,6 +10,7 @@ AdminSection::registerModel(product::class, function (ModelConfiguration $model)
             AdminColumn::text('brand.name')->setLabel('Производитель'),
             AdminColumn::link('model')->setLabel('Модель'),
             AdminColumn::link('price')->setLabel('Цена'),
+            AdminColumn::link('availability.title')->setLabel('Наличие'),
             AdminColumn::link('category.name')->setLabel('Категория'),
             AdminColumn::link('mini_descr')->setLabel('Нотация'),
             AdminColumn::link('descr')->setLabel('Описание'),
@@ -21,6 +22,7 @@ AdminSection::registerModel(product::class, function (ModelConfiguration $model)
         return AdminForm::form()->setItems([
             AdminFormElement::select('brand_id', 'Производитель')->setModelForOptions('App\brand')->setDisplay('name'),
             AdminFormElement::text('model', 'Модель')->required(),
+            AdminFormElement::select('availability_id', 'Наличие')->setModelForOptions('App\Availability')->setDisplay('title'),
             AdminFormElement::select('category_id', 'Категория')->setModelForOptions('App\Category')->setDisplay('name'),
             AdminFormElement::textaddon('price', 'Цена')->setAddon('$')->placeAfter(),
             AdminFormElement::textarea('mini_descr', 'Нотация'),

@@ -32,6 +32,9 @@ return [
             (new Page(\App\product::class))
                 ->setIcon('fa fa-newspaper-o')
                 ->setPriority(20)->setTitle('Товар'),
+            (new Page(\App\Availability::class))
+                ->setIcon('fa fa-newspaper-o')
+                ->setPriority(30)->setTitle('Наличие'),
         ]
     ],
     [

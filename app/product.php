@@ -29,6 +29,10 @@ class product extends Model implements AttachableInterface
     {
         return $this->belongsTo('App\brand');
     }
+    public function availability()
+    {
+        return $this->belongsTo('App\Availability');
+    }
 
 //вставка изображени
 

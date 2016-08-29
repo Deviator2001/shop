@@ -3,13 +3,34 @@
     <div class="container-fluid">
     @if ($products->count())
             <h3>По вашему запросу найдены следующие товары:</h3>
-            <ul>
+            <table>
+                <tr>
+                    <th style="text-align: center">Наименование</th>
+                    <th></th>
+                    <th style="text-align: center">Цена</th>
+                    <th></th>
+                    <th style="text-align: center">Доступность</th>
+                </tr>
                 @foreach($products as $product)
-                    <li>
-                        <a href="{{URL::to('product/'.$product->id)}}">{{$product->model}}</a>
-                    </li>
+                    <tr>
+                        <td>
+                            <a href="{{URL::to('product/'.$product->id)}}">{{$product->model}}</a>
+                        </td>
+                        <td>
+                            &nbsp;&nbsp;&nbsp;
+                        </td>
+                        <td>
+                            {{$product->price}}
+                        </td>
+                        <td>
+                            &nbsp;&nbsp;&nbsp;
+                        </td>
+                        <td>
+                            {{$product->availability->title}}
+                        </td>
+                    </tr>
                 @endforeach
-            </ul>
+            </table>
     @else
             <h3>По вашему запросу ничего не найдено.</h3>
     @endif

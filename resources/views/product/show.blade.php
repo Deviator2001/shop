@@ -17,8 +17,9 @@
     @endforeach
 @endif
 
-<li><h4>Производитель:</h4> {{$brand}}</li>
+<li><h4>Доступность:</h4> {{$product->availability->title}}</li>
 <li><h4>Цена:</h4> {{$product->price}}</li>
+<li><h4>Производитель:</h4> {{$brand}}</li>
 <li><h4>Артикул:</h4> {{$product->id}}</li>
 
 <li><h4>Аннотация:</h4></li>
