@@ -5,11 +5,11 @@
             <h3>По вашему запросу найдены следующие товары:</h3>
             <table>
                 <tr>
-                    <th style="text-align: center">Наименование</th>
+                    <th>Наименование</th>
                     <th></th>
-                    <th style="text-align: center">Цена</th>
+                    <th>Цена</th>
                     <th></th>
-                    <th style="text-align: center">Доступность</th>
+                    <th>Доступность</th>
                 </tr>
                 @foreach($products as $product)
                     <tr>
