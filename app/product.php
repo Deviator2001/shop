@@ -32,54 +32,13 @@ class product extends Model implements AttachableInterface
 
 //вставка изображений
 
-    public function setSlugAttribute($slug)
+    public function getImagesAttribute($value)//получение и запись нескольких путей к картинкам в одно поле таблицы
     {
-
-        if($slug=='') $slug = str_slug(Request::get('name'));
-        if($cat= self::where('slug',$slug)->first()){
-            $idmax=self::max('id')+1;
-            if(isset($this->attributes['id']))
-            {
-                if ($this->attributes['id'] != $cat->id ){
-                    $slug=$slug.'_'.++$idmax;
-                }
-            }
-            else
-            {
-                if (self::where('slug',$slug)->count() > 0)
-                    $slug=$slug.'_'.++$idmax;
-            }
-        }
-        $this->attributes['slug']=$slug;
+        return preg_split('/,/', $value, -1, PREG_SPLIT_NO_EMPTY);
     }
-
-    public function getPhotosAttribute($value)
+    public function setImagesAttribute($images)//получение и запись нескольких путей к картинкам в одно поле таблицы
     {
-        return array_pluck($this->attaches()->get()->toArray(), 'filename');
-    }
-
-    public function setPhotosAttribute($images)
-    {
-        $imgtitles = Request::get('imgtitle');
-        $imgalts = Request::get('imgalt');
-        $imgdescs = Request::get('imgdesc');
-        $this->save();
-        $i=0;
-        foreach($images as $image)
-        {
-            $this->updateOrNewAttach($image, $imgtitles[$i], $imgalts[$i], $imgdescs[$i]);
-            $i++;
-        }
-        $path = config('admin.imagesUploadDirectory').'/'.Sentinel::check()->id;
-        $files = glob(public_path($path)."/*");
-        if (count($files) > 0) {
-            foreach ($files as $file) {
-                if (file_exists($file)) {
-                    unlink($file);
-                }
-            }
-        }
-        $this->keepOnly($images);
+        $this->attributes['images'] = implode(',', $images);
     }
 
 }

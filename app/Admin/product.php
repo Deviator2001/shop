@@ -25,6 +25,7 @@ AdminSection::registerModel(product::class, function (ModelConfiguration $model)
             AdminFormElement::textaddon('price', 'Цена')->setAddon('$')->placeAfter(),
             AdminFormElement::textarea('mini_descr', 'Нотация'),
             AdminFormElement::wysiwyg('descr', 'Описание'),
+            AdminFormElement::images('images', 'Фото'),
             //categories - функция из модели App\product
         ]);
     });
