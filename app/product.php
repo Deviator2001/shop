@@ -30,7 +30,7 @@ class product extends Model implements AttachableInterface
         return $this->belongsTo('App\brand');
     }
 
-//вставка изображений
+//вставка изображени
 
     public function getImagesAttribute($value)//получение и запись нескольких путей к картинкам в одно поле таблицы
     {

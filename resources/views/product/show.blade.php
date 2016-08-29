@@ -10,16 +10,14 @@
     <li class="ibl">->{{$product->model}}</li>
 @endif
 
-<h1>Вывод изображений товара</h1>
-@if($product->attaches)
-    @foreach($product->attaches as $attach)
-        <img src="{{URL::to($attach->filename)}}" alt="{{$attach->alt}}" title="{{$attach->title}}">
+<h1>{{$product->model}}</h1>
+@if($product->images)
+    @foreach($product->images as $image)
+        <a rel="gallery" class="photo" href="/{{$image}}"><img src="{{URL::to($image)}}" width = 20%></a>
     @endforeach
 @endif
 
 <li><h4>Производитель:</h4> {{$brand}}</li>
-<li><h4>Товар:</h4> {{$product->model}}</li>
-
 <li><h4>Цена:</h4> {{$product->price}}</li>
 <li><h4>Артикул:</h4> {{$product->id}}</li>
 
