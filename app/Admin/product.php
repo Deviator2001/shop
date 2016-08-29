@@ -5,7 +5,7 @@ use SleepingOwl\Admin\Model\ModelConfiguration;
 AdminSection::registerModel(product::class, function (ModelConfiguration $model) {
     // Display
     $model->onDisplay(function () {
-        $display = AdminDisplay::table();
+        $display = AdminDisplay::datatables();
         $display->setColumns([
             AdminColumn::text('brand.name')->setLabel('Производитель'),
             AdminColumn::link('model')->setLabel('Модель'),

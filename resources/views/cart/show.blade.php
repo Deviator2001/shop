@@ -19,11 +19,9 @@
                 @foreach($products as $product)
                     <tr>
                         <td class="col-sm-8 col-md-6">
-                            <div class="media">
-                                <a class="thumbnail pull-left" href="#"> <img class="media-object" src="" style="width: 100px; height: 72px;"> </a>
-                                <div class="media-body">
+
+                            <div class="media-body">
                                     <h5 class="media-heading"><a href="/product/{{$product['item']['id']}}">{{$product['item']['model']}}</a></h5>
-                                </div>
                             </div>
                         </td>
                         <td>
