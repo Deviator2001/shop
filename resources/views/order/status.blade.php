@@ -19,7 +19,10 @@
                     @foreach($orders as $order)
                         <tr>
                             <td>
-                                {{$order->id}}
+                                <a href="/orderitem/{{$order->id}}"> <button type="button" class="btn btn-default">
+                                        <span class="fa fa-shopping-cart"></span> {{$order->id}}
+                                    </button>
+                                </a>
                             </td>
                             <td>
 

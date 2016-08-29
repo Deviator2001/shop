@@ -85,7 +85,9 @@ Route::get('logout', 'AuthController@logoutuser');
     Route::post('order/add', ['as' => 'order.add', 'uses' => 'OrderController@orderadd']);
 //Состояние заказов
     Route::get('myorders', ['as' => 'order.status', 'uses' => 'OrderController@status']);
-    Route::get('allorders', ['as' => 'allorder.status', 'uses' => 'OrderController@allorders']);
+    Route::get('allorders', ['as' => 'allorder.status', 'uses' => 'OrderController@allorders', 'middleware' => 'allorders']);
+    Route::get('orderitem/{id}', ['as' => 'order.item', 'uses' => 'OrderController@orderitem']);
+    Route::DELETE('delorder/{id}', ['as' => 'order.destroy', 'uses' => 'OrderController@delorder']);
 
 
 

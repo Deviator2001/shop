@@ -22,7 +22,10 @@
                     @foreach($orders as $order)
                         <tr>
                             <td>
-                                {{$order->id}}
+                                <a href="/orderitem/{{$order->id}}"> <button type="button" class="btn btn-default">
+                                        <span class="fa fa-shopping-cart"></span> {{$order->id}}
+                                    </button>
+                                </a>
                             </td>
                             <td>
                                 {{$order->created_at}}
@@ -44,6 +47,13 @@
                             </td>
                             <td>
                                 {{$order->status}}
+                            </td>
+                            <td>
+                                <form action={{ route('order.destroy', [$order->id])}} method="post">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                    <button class="btn btn-danger">Удалить</button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach

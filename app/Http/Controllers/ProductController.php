@@ -13,7 +13,7 @@ use App\Cart;
 class ProductController extends Controller
 {
 
-    public function show($productid)
+    public function show($productid)//отображение страницы товара(продукта)
     {
         if ( $product = product::find($productid))
         {
@@ -24,7 +24,7 @@ class ProductController extends Controller
         abort(404);
     }
 
-    public function addtocart(Request $request)
+    public function addtocart(Request $request)//добавление товара в корзину
     {
         $id = Input::get('id');//получаем id добавляемого товара
         $qtyadd = Input::get('qtyadd');//получаем количесво добавляемого товара
@@ -64,18 +64,5 @@ class ProductController extends Controller
         $products = product::with('category')->where('model', 'LIKE', "%$q%")->get();
         return view('product.search', ['products' => $products]);
     }
-
-    public function popupcallorderajax(Request $request)
-    {
-        return Response::json(array('error' => '1', 'message' => 'усё окей шеффф'));
-    }
-
-    public function st()
-    {
-        return view('ajax');
-    }
-
-
-
 
 }

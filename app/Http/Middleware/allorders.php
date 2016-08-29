@@ -6,7 +6,7 @@ use Closure;
 use Sentinel;
 use Redirect;
 
-class Myorders
+class Allorders
 {
     /**
      * Handle an incoming request.
@@ -15,11 +15,10 @@ class Myorders
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next, $id)
+    public function handle($request, Closure $next)
     {
-        if(Sentinel::check()->id == $id)
-        return $next($request);
-        else
-        return redirect('/');
+        if(Sentinel::guest()) return redirect('login');
+        if(Sentinel::inRole('manager')) return $next($request);
+        return Redirect::back();
     }
 }
