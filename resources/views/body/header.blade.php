@@ -4,8 +4,7 @@
     <li><a href="/">Контакты</a></li>
 </ul>
 <ul class="nav navbar-nav navbar-right">
-            <li><a href="{{ url('/cart') }}"><span class="glyphicon glyphicon-shopping-cart"></span>Корзина</a></li>
-            <span class="badge">{{Session::has('cart') ? Session::get('cart')->totalQty:''}}</span>
+            <li><a href="{{ url('/cart') }}"><span class="glyphicon glyphicon-shopping-cart"></span>Корзина <span class="badge">{{Session::has('cart') ? Session::get('cart')->totalQty:''}}</span></a></li>
         @if (Sentinel::guest())
             <li><a href="{{ url('/login') }}"><span class="glyphicon glyphicon-log-in"></span> Войти</a></li>
             <li><a href="{{ url('/register') }}"><span class="glyphicon glyphicon-registration-mark"></span> Регистрация</a></li>
