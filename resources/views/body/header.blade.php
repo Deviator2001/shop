@@ -21,18 +21,20 @@
 </ul>
 <div class="row">
 <div class="col-sm-8">
-<div class="jumbotron">
     <img src="/images/logo/logo.jpg" width="70%"/>
 </div>
-</div>
 <div class="col-sm-4">
-<h1>
+<h2>
 Интернет магазин цифровой техники
-</h1>
+</h2>
     <form id="search" action="/search" method="get">
           <input type="text" name="q" id = "search" placeholder="Поиск...">
         <input type="submit" value="Найти">
     </form>
+    <br/>
+    <div>
+    @yield('header.right')
+    </div>
 </div>
 </div>
 <!-- -->

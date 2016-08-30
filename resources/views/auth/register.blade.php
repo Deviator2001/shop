@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('bodyright')
+@section('header.right')
     <h4>Регистрация на сайте</h4>
     {!! Form::open() !!}
     @include('widgets.form._formitem_text', ['name' => 'email', 'title' => 'Email', 'placeholder' => 'Email' ])

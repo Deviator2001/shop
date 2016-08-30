@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('body')
     @if (Session::has('cart'))
-    <h1>В вашу корзину добавлены следующие товары:</h1>
+    <h2>В вашу корзину добавлены следующие товары:</h2>
     <div class="row">
         <div class="col-sm-12 col-md-10 col-md-offset-1">
             <table class="table table-hover">
@@ -73,7 +73,7 @@
         </div>
     </div>
     @else
-        <h1>В корзине нет ни одного товара</h1>
+        <h2>В корзине нет ни одного товара</h2>
     @endif
 
 @endsection

@@ -1,5 +1,6 @@
 @extends('layouts.master')
-@section('bodyright')
+@section('header.right')
+    <h4>Войти на сайт</h4>
     {!! Form::open() !!}
     @include('widgets.form._formitem_text', ['name' => 'email', 'title' => 'Ваш Email:   ', 'placeholder' => 'Ваш Email' ])
     @include('widgets.form._formitem_password', ['name' => 'password', 'title' => 'Ваш Пароль: ', 'placeholder' => 'Пароль' ])
