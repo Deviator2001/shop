@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('body')
-<h3><p>Каталог товаров интернет магазина</h3>
+<h3><a href="{{ url('/category') }}">Каталог товаров интернет магазина</a></h3>
 <div class="container-fluid">
 @if($many)
     <ul class="menu-ul">

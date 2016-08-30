@@ -21,14 +21,14 @@
 </ul>
 <div class="row">
 <div class="col-sm-8">
-    <img src="/images/logo/logo.jpg" width="70%"/>
+    <a href="/"><img src="/images/logo/logo.jpg" width="70%"/></a>
 </div>
 <div class="col-sm-4">
-<h2>
-Интернет магазин цифровой техники
-</h2>
+<h1>
+Магазин цифровой техники
+</h1>
     <form id="search" action="/search" method="get">
-          <input type="text" name="q" id = "search" placeholder="Поиск...">
+          <input type="text" name="q" id = "search" placeholder="Поиск товара...">
         <input type="submit" value="Найти">
     </form>
     <br/>
