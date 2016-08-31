@@ -29,10 +29,6 @@
     <ul>
             @foreach($products as $product)
                 <li>
-                    @if($product->attaches()->count() > 0)
-                        {{$product->attaches->title}}
-                        <img src="{{URL::to($product->attaches->first()->filename)}}" alt="{{$product->attaches->first()->alt}} title="{{$product->attaches->first()->title}}>
-                    @endif
                     <a href="{{URL::to('product/'.$product->id)}}">{{$product->model}}</a>
                 </li>
             @endforeach
@@ -47,5 +43,16 @@
     @endforeach
     <li class="ibl">->{{$node->name}}</li>
 @endif
+</div>
+<div>
+@if($showed)
+@foreach($showed->showeditems as $showeditems)
+{{$showeditems['showeditem']['id']}}
+{{$showeditems['showeditem']['model']}}
+{{$showeditems['showeditem']['image']}}
+{{$showeditems['showeditem']['price']}}
+@endforeach
+@endif
+</div>
 </div>
 @endsection

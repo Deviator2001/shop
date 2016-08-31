@@ -6,6 +6,7 @@ use App\Category;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Session;
 
 class CategoryController extends Controller
 {
@@ -16,14 +17,22 @@ class CategoryController extends Controller
         {
             $nodes= Category::whereIsRoot()->get();
             $many = true;
-            return view('category.show', compact('nodes','many'));
+            if (Session::has('showed'))
+            $showed = Session::get('showed');
+            else
+            $showed = false;
+            return view('category.show', compact('nodes','many','showed'));
         }
         // Иначе отдаем запрашиваемую категорию
         if ($node = Category::find($id))
         {
             $many = false;
             $products=Category::find($node->id)->products()->paginate(10);
-            return view('category.show', compact('node','many', 'products'));
+            if (Session::has('showed'))
+                $showed = Session::get('showed');
+            else
+                $showed = false;
+            return view('category.show', compact('node','many','products','showed'));
         }
 
         abort(404);

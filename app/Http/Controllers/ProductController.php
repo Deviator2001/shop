@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\product;
 use App\Category;
+use App\Showed;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Response;
@@ -13,15 +14,17 @@ use App\Cart;
 class ProductController extends Controller
 {
 
-    public function show($productid)//отображение страницы товара(продукта)
+    public function show(Request $request, $productid)//отображение страницы товара(продукта)
     {
-        if ( $product = product::find($productid))
-        {
+        $product = product::find($productid);
+            $oldShowed = Session::has('showed') ? Session::get('showed') : null;
+            $showed = new Showed($oldShowed);
+            $showed->add($product, $productid);//добавляем товары в просмотренные
+            $request->session()->put('showed', $showed);//заносим массив корзины в переменную сессии
             $brand = $product->brand->name;
             $pathCategory=$product->category;//Непосредственная категория товара (массив)
             return view('product.show', compact('product', 'brand', 'pathCategory'));
-        }
-        abort(404);
+
     }
 
     public function addtocart(Request $request)//добавление товара в корзину

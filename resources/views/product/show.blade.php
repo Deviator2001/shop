@@ -11,11 +11,16 @@
 @endif
 
 <h1>{{$product->model}}</h1>
-@if($product->images)
+<div>
+<a rel="gallery" class="photo" href="/{{$product->image}}"><img src="{{URL::to($product->image)}}" width = 20%></a>
+</div>
+<div>
+    @if($product->images)
     @foreach($product->images as $image)
-        <a rel="gallery" class="photo" href="/{{$image}}"><img src="{{URL::to($image)}}" width = 20%></a>
+        <a rel="gallery" class="photo" href="/{{$image}}"><img src="{{URL::to($image)}}" width = 10%></a>
     @endforeach
 @endif
+</div>
 
 <li><h4>Доступность:</h4> {{$product->availability->title}}</li>
 <li><h4>Цена:</h4> {{$product->price}}</li>

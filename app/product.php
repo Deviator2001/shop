@@ -3,14 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Angrydeer\Attachfiles\AttachableTrait;
-use Angrydeer\Attachfiles\AttachableInterface;
 use Request;
 use Sentinel;
 
-class product extends Model implements AttachableInterface
+class product extends Model
 {
-    use AttachableTrait;
 
     protected $table = 'products';//указываем с какой таблицей базы данных работает данная модель
 
@@ -33,14 +30,11 @@ class product extends Model implements AttachableInterface
     {
         return $this->belongsTo('App\Availability');
     }
-
-//вставка изображени
-
-    public function getImagesAttribute($value)//получение и запись нескольких путей к картинкам в одно поле таблицы
+    public function getImagesAttribute($value)
     {
         return preg_split('/,/', $value, -1, PREG_SPLIT_NO_EMPTY);
     }
-    public function setImagesAttribute($images)//получение и запись нескольких путей к картинкам в одно поле таблицы
+    public function setImagesAttribute($images)
     {
         $this->attributes['images'] = implode(',', $images);
     }

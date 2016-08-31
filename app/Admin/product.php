@@ -14,6 +14,7 @@ AdminSection::registerModel(product::class, function (ModelConfiguration $model)
             AdminColumn::link('category.name')->setLabel('Категория'),
             AdminColumn::link('mini_descr')->setLabel('Нотация'),
             AdminColumn::link('descr')->setLabel('Описание'),
+            AdminColumn::image('image')->setLabel('Фото'),
         ]);
         return $display;
     });
@@ -27,7 +28,8 @@ AdminSection::registerModel(product::class, function (ModelConfiguration $model)
             AdminFormElement::textaddon('price', 'Цена')->setAddon('$')->placeAfter(),
             AdminFormElement::textarea('mini_descr', 'Нотация'),
             AdminFormElement::wysiwyg('descr', 'Описание'),
-            AdminFormElement::images('images', 'Фото'),
+            AdminFormElement::image('image', 'Основное Фото'),
+            AdminFormElement::images('images', 'Обзорные Фото'),
             //categories - функция из модели App\product
         ]);
     });

@@ -162,6 +162,7 @@ return [
         Angrydeer\Attachfiles\AttachfilesServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         App\Providers\HelperServiceProvider::class,
+        App\Providers\ViewComposerServiceProvider::class,
 
     ],
 
