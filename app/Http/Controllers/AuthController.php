@@ -131,7 +131,14 @@ class AuthController extends Controller
         {
             $activation = Activation::create($sentuser);
             $code = $activation->code;
-            $sent = Mail::send('mail.account_activate', compact('sentuser', 'code'), function($m) use ($sentuser)
+            //$time = date("Y-m-d H:i:s");
+            //$datetime1 = new DateTime($alert->publicated_to);
+            //$datetime2 = new DateTime();
+            //$interval = $datetime2->diff($datetime1);
+            //echo $interval->format("%d");
+
+
+            $sent = Mail::send('mail.account_activate', compact('sentuser', 'code', 'time'), function($m) use ($sentuser)
             {
                 $m->from('deviator2001@yandex.ru', 'LaravelSite');
                 $m->to($sentuser->email)->subject('Активация аккаунта');
