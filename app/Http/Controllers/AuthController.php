@@ -131,12 +131,12 @@ class AuthController extends Controller
         {
             $activation = Activation::create($sentuser);
             $code = $activation->code;
-            //$time = date("Y-m-d H:i:s");
+            /*$time = date("Y-m-d H:i:s");
             //$datetime1 = new DateTime($alert->publicated_to);
             //$datetime2 = new DateTime();
             //$interval = $datetime2->diff($datetime1);
-            //echo $interval->format("%d");
-
+            echo $interval->format("%d");
+*/
 
             $sent = Mail::send('mail.account_activate', compact('sentuser', 'code', 'time'), function($m) use ($sentuser)
             {
